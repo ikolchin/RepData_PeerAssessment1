@@ -12,7 +12,7 @@ library(dplyr)
 ```
 
 ## Loading and preprocessing the data
-```{r, echo=TRUE}
+```{r, echo=TRUE, cache=TRUE}
 #Read the data into a dataframe
 df <- read.csv("activity.csv", stringsAsFactors=FALSE)
 
@@ -24,7 +24,7 @@ str(df)
 ```
 
 ## What is mean total number of steps taken per day?
-```{r, echo=TRUE}
+```{r, echo=TRUE, cache=TRUE}
 #Calculate number of steps per day
 steps.per.day <- df %>%
     filter(!is.na(steps)) %>%
@@ -43,7 +43,7 @@ median(steps.per.day$steps, na.rm=TRUE)
 ```
 
 ## What is the average daily activity pattern?
-```{r, echo=TRUE}
+```{r, echo=TRUE, cache=TRUE}
 #Calculate average number of steps per interval
 avg.steps.per.interval <- df %>%
     filter(!is.na(steps)) %>%
@@ -60,7 +60,7 @@ avg.steps.per.interval[which.max(avg.steps.per.interval$steps), ]
 ```
 
 ## Imputing missing values
-```{r, echo=TRUE}
+```{r, echo=TRUE, cache=TRUE}
 #Report the total number of missing values in the dataset
 sum(is.na(df$steps))
 
@@ -92,7 +92,7 @@ median(steps.per.day.filled$steps, na.rm=TRUE)
 The median value of steps per day increased slightly due to filling in the missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r, echo=TRUE}
+```{r, echo=TRUE, cache=TRUE}
 #Create a new column distinguishing between weekdays and weekends
 df.filled <- mutate(df.filled, daytype = ifelse(weekdays(df.filled$date) == "Saturday" | weekdays(df.filled$date) == "Sunday", "weekend", "weekday"))
 df.filled$daytype <- as.factor(df.filled$daytype)
