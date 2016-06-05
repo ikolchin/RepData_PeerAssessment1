@@ -122,5 +122,4 @@ plot(avg.steps.per.interval.weekends$interval,
      main="Weekends",
      xlab="interval",
      ylab="average number of steps")
-
 ```
